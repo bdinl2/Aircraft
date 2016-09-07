@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace WindowsFormsApplication1
 {
@@ -19,11 +20,29 @@ namespace WindowsFormsApplication1
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            
-            Graphics g = e.Graphics;
-            Aircraft fighter = new Aircraft(g);
-            List<Coord> listCoord = fighter.CalculateCoord(0f, fighter.pList);
-            fighter.Draw(g, listCoord, 200, 150);
+            // пока переменнная flag = true будет выполняться цикл (движение самолета)
+            bool flag = true;
+            int xAircraft = 200;
+            int yAircraft = 150;
+            float asimut = 0f;
+            while (flag)
+            {
+                float ugol = Convert.ToSingle(Math.Atan2(Form1.MousePosition.Y - yAircraft, Form1.MousePosition.X - xAircraft));
+                if (asimut <= ugol)
+                {
+                    asimut += 0.04f;
+                }
+                else
+                {
+                    asimut -= 0.04f;
+                }
+                Graphics g = e.Graphics;
+                Aircraft fighter = new Aircraft(g);
+                List<Coord> listCoord = fighter.CalculateCoord(asimut, fighter.pList);
+                e.Graphics.Clear(Color.White);
+                fighter.Draw(g, listCoord, xAircraft, yAircraft);
+                Thread.Sleep(500);
+            }
 
         }
     }

@@ -80,8 +80,8 @@ namespace WindowsFormsApplication1
             List<Coord> coordList = new List<Coord>();
             foreach (Point p in list)
             {
-                int x = Convert.ToInt32(Math.Round(p.ro * Math.Cos(p.fi + asimut)));//
-                int y = Convert.ToInt32(Math.Round(p.ro * Math.Sin(p.fi + asimut)));
+                int x = Convert.ToInt32(Math.Round(p.ro * Math.Cos(p.fi - asimut)));//
+                int y = Convert.ToInt32(Math.Round(p.ro * Math.Sin(p.fi - asimut)));
                 Coord c = new Coord(x, y);
                 coordList.Add(c);
             }
@@ -100,5 +100,14 @@ namespace WindowsFormsApplication1
             
 
         }
+
+        
+
+
+       /* public Coord CalculateCentrPoint()
+        {
+
+            return;
+        }*/
     }
 }
