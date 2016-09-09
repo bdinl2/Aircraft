@@ -27,8 +27,8 @@ namespace WindowsFormsApplication1
             float asimut = 0f;
             while (flag)
             {
-                float ugol = Convert.ToSingle(Math.Atan2(Form1.MousePosition.Y - yAircraft, Form1.MousePosition.X - xAircraft));
-                if (asimut <= ugol)
+                float ugol = Convert.ToSingle(Math.Atan2(yAircraft - Form1.MousePosition.Y, Form1.MousePosition.X - xAircraft)); //Form1.MousePosition.X - xAircraft
+                if (asimut < ugol)
                 {
                     asimut += 0.04f;
                 }
@@ -36,12 +36,14 @@ namespace WindowsFormsApplication1
                 {
                     asimut -= 0.04f;
                 }
+                xAircraft += Convert.ToInt32(Math.Cos(asimut) * 5);
+                yAircraft -= Convert.ToInt32(Math.Sin(asimut) * 5);
                 Graphics g = e.Graphics;
                 Aircraft fighter = new Aircraft(g);
                 List<Coord> listCoord = fighter.CalculateCoord(asimut, fighter.pList);
                 e.Graphics.Clear(Color.White);
                 fighter.Draw(g, listCoord, xAircraft, yAircraft);
-                Thread.Sleep(500);
+                Thread.Sleep(200);
             }
 
         }

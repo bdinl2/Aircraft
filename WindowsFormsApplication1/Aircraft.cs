@@ -94,8 +94,8 @@ namespace WindowsFormsApplication1
             Pen penAircraft = new Pen(Color.Red);
             for(int c = 0; c<= listAircraft.Count -2; c++)
             {
-                g.DrawLine(penAircraft, listAircraft[c].xAircraft + 200, listAircraft[c].yAircraft + 150, listAircraft[c + 1].xAircraft + 200, listAircraft[c + 1].yAircraft + 150);
-                g.DrawLine(penAircraft, listAircraft[listAircraft.Count - 1].xAircraft + 200, listAircraft[listAircraft.Count - 1].yAircraft + 150, listAircraft[0].xAircraft + 200, listAircraft[0].yAircraft + 150);//из метода расчета координат
+                g.DrawLine(penAircraft, listAircraft[c].xAircraft + xAircraft, listAircraft[c].yAircraft + yAircraft, listAircraft[c + 1].xAircraft + xAircraft, listAircraft[c + 1].yAircraft + yAircraft);
+                g.DrawLine(penAircraft, listAircraft[listAircraft.Count - 1].xAircraft + xAircraft, listAircraft[listAircraft.Count - 1].yAircraft + yAircraft, listAircraft[0].xAircraft + xAircraft, listAircraft[0].yAircraft + yAircraft);//из метода расчета координат
             }
             
 
